@@ -1,21 +1,16 @@
 from sqlalchemy import create_engine
 from sqlalchemy import sql
-from sqlalchemy import sql 
 from BarBeerDrinker import config
 
 engine=create_engine(config.database_uri)
 
-
 def get_bars():
-        with engine.connect() as con:    
-                rs=con.execute("SELECT barName, license, city, phone, address FROM bars;")
-                #rs=con.execute("SELECT name, license, city, phone, addr FROM bars")
-                return [dict(row) for row in rs]
-
-        
+    with engine.connect() as con:
+        rs=con.execute("SELECT barName, license, city, phone, address FROM bars;")
+        return [dict(row) for row in rs]
 def find_bar(name):
     with engine.connect() as con:
-        query = sql.text("SELECT barName,license, city, phone,address FROM bars WHERE barName= :name;")
+        query = sql.text("SELECT barName,license, city, phone,address FROM bars WHERE barame= :name;")
         rs = con.execute(query, name=name)
         result = rs.first()
         if result is None:

@@ -1,0 +1,29 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to the Bar-beer-Drinker webpage!</h1>
+    <p class="lead">This is the Front-end of our Bar-Beer-Drinkers table, showcasing differenet features of the data.</p>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>License</th>
+        <th>Address</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bar of bars; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <th>{{ bar.barName }}</th>
+        <th>{{ bar.license }}</th>
+        <th>{{ bar.address }}</th>
+        <th>{{ bar.city }}</th>
+      </tr>
+    </tbody>
+  </table>
+ </div>
