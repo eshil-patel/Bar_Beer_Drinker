@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BarsService, Bar } from '../bars.service'
+import { BarsService, Bar, BarMenuItem } from '../bars.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -9,9 +9,10 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./bar-details.component.css']
 })
 export class BarDetailsComponent implements OnInit {
+
   barName: string;
   barDetails: Bar;
-  
+  menu: BarMenuItem[];
 
   constructor(
     private barService: BarsService,
@@ -19,6 +20,7 @@ export class BarDetailsComponent implements OnInit {
   ) {
     route.paramMap.subscribe((paramMap) => {
       this.barName = paramMap.get('bar');
+
       barService.getBar(this.barName).subscribe(
         data => {
           this.barDetails = data;
@@ -30,6 +32,12 @@ export class BarDetailsComponent implements OnInit {
             console.error(error.status + ' - ' + error.body);
             alert('An error occurred on the server. Please check the browser console.');
           }
+        }
+      );
+
+      barService.getMenu(this.barName).subscribe(
+        data => {
+          this.menu = data;
         }
       );
     });

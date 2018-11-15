@@ -1,36 +1,38 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Welcome to the Bar-beer-Drinker webpage!</h1>
-    <p class="lead">This is the Front-end of our Bar-Beer-Drinkers table, showcasing different features of the data.</p>
+    <h1 class="display-4">Welcome to Bar Beer Drinker!</h1>
+    <p class="lead">Eshil Patel and Masood Karimi</p>
   </div>
 </div>
 
-
 <div class="container">
-    <p-table [value]="bars">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Name</th>
-                <th>License</th>
-                <th>Address</th>
-                <th>City</th>
-            </tr>
-          </ng-template>
-            <ng-template pTemplate="body" let-bar>
-                <tr>
-                  <td>
-                    <a routerLink="/bars/{{ bar.barName }}">
-                    {{ bar.barName }}
-                    </a>
-                  </td>
-                  <td>{{ bar.license }}</td>
-                  <td>{{ bar.address }}</td>
-                  <td>{{ bar.city }}</td>
-                </tr>
-            </ng-template>
-      </p-table>
+
+  <p-table [value]="bars">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>BarId</th>
+          <th>Name</th>
+          <th>License</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Phone</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bar>
+        <tr>
+          <td>
+            <a routerLink="/bars/{{ bar.barId }}">
+              {{ bar.barId }}
+            </a>
+          </td>
+          <td>{{ bar.barName }}</td>
+          <td>{{ bar.license }}</td>
+          <td>{{ bar.address }}</td>
+          <td>{{ bar.city }}</td>
+          <td>{{ bar.phone }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
 </div>
 
-<br>
-<br>
-<br>
+<br><br>
